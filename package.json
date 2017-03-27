@@ -1,0 +1,29 @@
+{
+  "name": "blogsite",
+  "version": "1.0.0",
+  "description": "Blog for NYCDA assignment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "./node_modules/.bin/supervisor index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cjpennock/blogSite.git"
+  },
+  "author": "Chester Pennock",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cjpennock/blogSite/issues"
+  },
+  "homepage": "https://github.com/cjpennock/blogSite#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "lowdb": "^0.16.0",
+    "serve-static": "^1.12.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
