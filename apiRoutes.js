@@ -1,62 +1,70 @@
-// Pull in express
 const express = require('express');
 
 const router = express.Router();
 
-// Require postList file
-const postList = require('./postList');
+const postList = require('./postList')
 
-// Middleware - body parser
+
+// body parser middleware
 const parser = require('body-parser');
 
-// Parse requests with content type: application/json
+//parses requests with the content type of `application/json`
 router.use(parser.json());
 
-// Define a route: /blog
-router.get('/blog', (request, response, next) => {
+//define a route on `/hello/world`
+router.get('/blog',(request, response, next) => {
 	next();
 });
 
-// Post: blog
-router.post('./blog', (request, response, next) => {
+
+
+// post blog
+router.post('/blog', (request, response, next) => {
 	const requestBody = request.body;
 
-	// Add post
+	// Add a post
 	postList.createItem(requestBody);
 
 	next();
+
 });
 
-// Put: blog. Include :id in route
+
+
+// put blog
 router.put('/blog/:id', (request, response, next) => {
-	console.log('Here')
+	console.log('HERE')
 	const id = parseInt(request.params.id, 10);
 	const dataPayload = request.body;
 
-	// Updates: blog
 	postList.updateItem(id, 'data.blog', dataPayload.blog);
 	postList.updateItem(id, 'data.blogText', dataPayload.blogText);
 
 	next();
+}); // blog
+ 
 
-});
-
-// Delete
+// delete blog
 router.delete('/blog/:id', (request, response, next) => {
 	const id = parseInt(request.params.id, 10);
 
 	postList.deleteItem(id);
 
 	next();
-})
+}); 
+
+// delete
 
 router.use((request, response) => {
-	response.header('Content-type', 'application/json');
-	response.send(postList.getItems());
+	response.header('Content-Type', 'application/json');
+	response.send(postList.getItems());	
 });
 
-// Export
+
+
+
 module.exports = router;
+
 
 
 
